@@ -1,0 +1,24 @@
+Notice (Feb 28, 2017): I observed a challenge of using LabVIEW in controlling a device 
+through a DLL created in C language. This appeared ever since I was coding the interface 
+to control the Omega3 device back in 2013. What happens is that there is a sample drop 
+introduced by a delay in the loop. With loop time set at 1 m-sec, I will get the loop 
+rate = 1 kHz. In reality, rather than having the loop at that rate, the loop time can 
+increase up to 6-8 m-sec. This causes force application to the robot to be disjointed, not 
+continuous. As a result, once in a while, the robot will be unstable or jerky.
+
+I managed to point to a cause through eliminating various factors:
+
+(1) I tried to separate the robot loop and GUI loop but it didn’t give us significant benefit. 
+    Robot would be unstable.
+
+(2) I have to ensure that the LabVIEW VIs are coded very efficiently. Firstly, unnecessary 
+    variables and their locals have to be avoided. Secondly, graphics updating takes 
+    processing time and memory, so controls/indicators that have online updating have to be 
+    minimized. This includes decreasing the size of black screen to project moving dots/target.
+
+(3) I also thought that putting a C-based formula node takes some processing time. So I coded 
+    the minimum_jerk subroutine using wires. It appears doing this does not give much benefit.
+
+(4) There are 3 device functions I use in the loop: GetPosition, GetLinearVel, and SetForce. 
+    The biggest delay comes through reading the DLL. The loop delay appears even after doing 
+    step (2) and removing minimum_jerk VI in step (3).
