@@ -13,6 +13,7 @@
 		<Item Name="Main Menu - Behavioral Study.vi" Type="VI" URL="../Main Menu - Behavioral Study.vi"/>
 		<Item Name="Dependencies" Type="Dependencies">
 			<Item Name="user.lib" Type="Folder">
+				<Item Name="Close.vi" Type="VI" URL="/&lt;userlib&gt;/dhd_sdk7/VIs/Close.vi"/>
 				<Item Name="dhd_sdk7.lvlib" Type="Library" URL="/&lt;userlib&gt;/dhd_sdk7/dhd_sdk7.lvlib"/>
 			</Item>
 			<Item Name="vi.lib" Type="Folder">
@@ -32,6 +33,7 @@
 				<Item Name="Write To Spreadsheet File (string).vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Write To Spreadsheet File (string).vi"/>
 				<Item Name="Write To Spreadsheet File.vi" Type="VI" URL="/&lt;vilib&gt;/Utility/file.llb/Write To Spreadsheet File.vi"/>
 			</Item>
+			<Item Name="Folder_exist.vi" Type="VI" URL="../subVIs/Folder_exist.vi"/>
 			<Item Name="Force curl.vi" Type="VI" URL="../subVIs/Force curl.vi"/>
 			<Item Name="Get_center_pos.vi" Type="VI" URL="../subVIs/Get_center_pos.vi"/>
 			<Item Name="Global_var.vi" Type="VI" URL="../subVIs/Global_var.vi"/>
