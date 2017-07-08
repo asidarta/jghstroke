@@ -1,0 +1,446 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="http://www.ni.com/css/global/us/siteprint.css" media="print">
+<title>Do Formula Nodes, Expression Nodes, or Traditional Numeric Nodes Provide the Best Run-Time Performance? - National Instruments</title>
+<link rel=stylesheet type="text/css" href="/css/global/us/site.css"> 
+
+
+<!-- DTM Header START -->
+<script src="//assets.adobedtm.com/a3a673425858388bc1b1e0ed01eb252ad8ce12e0/satelliteLib-1401ce0fc9dae9e8602fcc34896d0a249c42abb2.js"></script>
+<!-- DTM Header STOP -->
+  
+ 
+
+<script language="javascript" type="text/javascript" src="/javascript/global/resistance_is_futile.js"></script>
+<style>
+.vertical-text {
+ display: inline-block;
+ overflow: hidden;
+ width: 1.5em;
+}
+.vertical-text__inner {
+ display: inline-block;
+ white-space: nowrap;
+ line-height: 1.5;
+
+		/* Safari */
+-webkit-transform: rotate(-90deg);
+
+/* Firefox */
+-moz-transform: rotate(-90deg);
+
+/* IE */
+-ms-transform: rotate(-90deg);
+
+/* Opera */
+-o-transform: rotate(-90deg);
+}
+
+/* This element stretches the parent to be square
+   by using the mechanics of vertical margins  */
+.vertical-text__inner:after {
+ content: '';
+ display: block;
+ margin: -1.5em 0 100%;
+}
+
+.outer-compatibility-table {
+margin-left:auto; 
+margin-right:auto;
+}
+
+.compatibility-table {
+width:470px;
+border-collapse: collapse;
+}
+
+.compatibility-table tr:hover{
+background-color:#f2f2f2; 
+}
+
+.compatibility-table td {
+border: 1px solid #CCC;
+vertical-align: bottom;
+}
+
+.compatibility-table thead,
+.compatibility-table th{
+background: url(http://www.ni.com/images/comparetable/header-bk.png) repeat-x #e2e2e2; 
+border: 1px solid #CCC;
+vertical-align: bottom;
+}
+
+.legend-table {
+margin-left:auto; 
+margin-right:auto;
+width:auto;
+border-collapse: collapse;
+}
+
+.legend-table th {
+width: 30px;
+border: 1px solid #CCC;
+vertical-align: bottom;
+}
+
+.legend-table td {
+border: 1px solid #CCC;
+vertical-align: bottom;
+}
+
+.niblue{
+background-color:#1C5D83;
+}
+.niblue50{
+background-color:#5498C5;
+}
+.niblue25{
+background-color:#90C1E1;
+}
+
+code{
+font-family: courier new;
+}
+</style>
+<link rel="canonical" href="http://digital.ni.com/public.nsf/allkb/020DD25245F2BCD086256D0E006615E9" ><meta name="Section" content="support">
+<meta name="ContentClass" content="technical">
+<meta name="ContentType" content="knowledgebase">
+<meta name="DeliveredBy" content="knowledgebase">
+<meta name="PageType" content="leaf">
+<meta name="DocType" content="Programming">
+<meta name="Language" scheme="rfc3066" content="en">
+<meta name="Date" scheme="iso8601" content="2003-04-20T00:00:00">
+<meta name="UpdateDate" scheme="iso8601" content="2014-04-01T17:23:55">
+<meta name="ShortTitle" content="Do Formula Nodes, Expression Nodes, or Traditional Numeric Nodes Provide the Best Run-Time Performance?">
+<meta name="Description" content="I need to perform repetitive calculations in my VI, and I am very concerned about run-time performance.  Which programming architecture should I choose - formula nodes, expression nodes, or traditional numeric nodes?">
+<meta name="Keywords" content="benchmark,bench,LabVIEW,expression,formula,primitive,node,execution,speed,performance,run-time">
+<meta name="DocumentCoreID" content="2WJCIHHM">
+<meta name="DocumentID" content="020DD25245F2BCD086256D0E006615E9">
+<meta name="Robots" content="index">
+<meta name="ProductCategories" content="845">
+<meta name="nigen1" content="845"><!--software categories-->
+<meta name="nigen2" content=""><!--hardware categories-->
+<meta name="nigen3" content="1">
+<meta name="DocStatus" content="current">
+<meta name="ArchivedDate" content="">
+<meta name="NiBoosts" content="UD:2014-04-01T17:23:55,RV:3.83,RN:12,RA:4,RD:2010-07-26">
+<!--for parametric search-->
+<meta name="classification" content="Programming">
+<meta name="LanguageType" content="English">
+<meta name="hardwareFamily" content="">
+<meta name="hardwareCategory" content="">
+<meta name="hardware" content="">
+<meta name="allsoftware" content="845,369">
+<meta name="daterange" content="">
+
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+function FormatAndSend(){	var frm = document.search2	var temp = "";	frm.query.value = replaceChars(frm.query.value);	frm.query1.value = replaceChars(frm.query1.value);			if (frm.query1.value=="")		{return false;}	else {			temp = frm.query1.value + "&lang=" + frm.lang.value;			frm.query.value = temp;			return true;}}function replaceChars (textstring) {// function replaces ampersands with "AND" 	tempstring = ""; 		for (i=0; i < textstring.length; i++) {  			tempchar = textstring.charAt(i);  			 if (tempchar == "&") {   				tempstring += "AND";  			}  			else {   				tempstring += tempchar;  			} 		} 	return tempstring;}
+
+// -->
+</script>
+
+<script language="JavaScript" type="text/javascript">
+<!-- 
+function validate(){	var testValueAnalysis = false;	var testEmailAdd = false;	var ratings = document.suppfeed.valueanalysis;	var answered = document.suppfeed.emailadd;	for(var i=0;i<ratings.length;i++){		if (ratings[i].checked){			testValueAnalysis=true;		}	}	for (var i=0;i<answered.length;i++){		if (answered[i].checked){			testEmailAdd=true;		}	}	if(testValueAnalysis && testEmailAdd){		document.suppfeed.submit();		return;} 	else {		alert("Please rate the document quality and tell us if it answered your question before clicking the Submit button.");	return;}}
+
+// -->
+</script>
+</head>
+<body text="#000000" bgcolor="#FFFFFF">
+ 
+ 
+<a name="top"> </a>
+<div id="wrapper">
+	<a name="top"></a>
+	<a href="http://www.ni.com/"><img src="/images/global/us/logo.gif" width="157" height="64" border="0" alt="NI Home" id="logo"></a>
+	     <div id="search" class="noindex">
+          </form>
+          <form name="search" action="http://search.ni.com/nisearch/app/main"><a href="http://sine.ni.com/apps/utf8/nios.store?action=view_cart" rel="nofollow"><img src="/images/global/neutral/cart.gif" alt="Cart" border="0"> Cart</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="http://www.ni.com/help/">Help</a>&nbsp;&nbsp; <input type="text" name="q" size="16" maxlength="254" value="Search" onclick="this.value='';" class="mainsearchinputbox">&nbsp;<input type="image" src="http://www.ni.com/images/global/neutral/cta_arrow.gif" class="topalign"></form>
+          <!--NOTES_FORM_TAG2-->
+     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="noindex">
+	<map name="globalnav"> 
+	<area shape="rect" alt="Academic" coords="557,0,627,20" href="http://www.ni.com/academic/"> 
+	<area shape="rect" alt="Company" coords="684,0,751,20" href="http://www.ni.com/company/"> 
+	<area shape="rect" alt="Events" coords="629,0,682,20" href="http://www.ni.com/events/"> 
+	<area shape="rect" alt="Community" coords="441,0,555,20" href="http://www.ni.com/community"> 
+	<area shape="rect" alt="Support" coords="378,0,439,20" href="http://www.ni.com/support/"> 
+	<area shape="rect" alt="Solutions" coords="307,0,376,20" href="http://www.ni.com/solutions/"> 
+	<area shape="rect" alt="Products & Services" coords="180,0,305,20" href="http://www.ni.com/products/"> 
+	<area shape="rect" alt="Contact NI" coords="91,0,179,20" href="http://www.ni.com/contact-us/" rel="nofollow"> 
+	<area shape="rect" alt="MyNI" coords="0,0,90,20" href="http://www.ni.com/myni/" rel="nofollow" > 
+	</map>
+	</div>
+<script language="javascript" type="text/javascript" charset="utf-8" src="/javascript/global/neutral/headerWidget.js"></script>
+	<div id="headerWidgetOutput" class="noindex">
+		<script type="text/javascript" charset="utf-8" src="https://tesla.ni.com/niwcf/ss?w=-1199731387&pfx=headerWidget"></script> 
+	</div>
+	<div id="sitenavigation" class="noindex"><img src="/images/buttons/us/support1_on.gif" width="752" height="20" border="0" alt="" usemap="#globalnav" /></div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ <div id="bodycontainer">
+		<div id="hierarchynavigation" class="noindex">
+			<ul>
+		<li><a href="http://www.ni.com/kb/"id="final">KnowledgeBase</a>
+</li></ul></li>	    	<li id="request_support"><a href="http://www.ni.com/ask/"><strong>Request Support</strong><br>from an engineer</a></li>
+
+
+
+
+
+
+
+
+
+
+
+			</ul>
+		</div>
+		<div id="primarycontentcontainer"> 
+ 		<div id="breadcrumbcontainer" class="noindex">
+			<table border="0" cellpadding="0" cellspacing="0" width="100%">
+				<tr valign="top">
+					<td id="breadcrumb"> <a href="http://www.ni.com/">NI&nbsp;Home</a> &gt; <a href="http://www.ni.com/support">Support</a> &gt; KnowledgeBase</td>
+					<td id="locale">
+
+
+      <script language="JavaScript">
+       <!--
+       function LinkSelect(form, sel) {
+       adrs = sel.options[sel.selectedIndex].value;
+       if (adrs != "-" ) location.href = adrs;
+       }
+       // -->
+    </script>
+    <form method="post" name="link">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select name="selLink" onChange="LinkSelect(this.form, this)">
+     <option value="-" selected>English
+    
+    </select>
+    </form>
+<script language="JavaScript">document.write('<form method=post name="DominoForm1" action="' + document.forms[0].action + '">'); </script>
+ 					</td>
+				</tr>
+			</table>
+		</div>
+		<table border="0" cellpadding="0" cellspacing="0" id="junktable">
+			<tr valign="top">
+				<td>
+				<div id="pagearea">
+ 
+<table  cellpadding="0" cellspacing="0" border="0">
+  <tr>
+	<td nowrap><span style="font-size: 9pt">13 ratings: </td>
+	<td>
+		<table border="1" cellpadding="0" cellspacing="0" border="2">
+		  <tr><td><img src="/images/global/us/red.gif" width="25" height="4" border="0" alt=""></TD><td><img src="/images/global/us/red.gif" width="25" height="4" border="0" alt=""></TD><td><img src="/images/global/us/red.gif" width="25" height="4" border="0" alt=""></TD><td><img src="/images/global/us/red.gif" width="21.15384615384616" height="4" border="0" alt=""><img src="/images/global/us/invis.gif" width="3.8461538461538396" height="4" border="0" alt=""></TD><td><img src="/images/global/us/invis.gif" width="25" height="4" border="0" alt=""></TD></tr>
+		</table>
+	</td>
+	<td nowrap>&nbsp;<span style="font-size: 9pt"><strong>3.84</strong> out of 5 &nbsp;&nbsp</span></td>
+  </tr>
+</table><p><h1>Do Formula Nodes, Expression Nodes, or Traditional Numeric Nodes Provide the Best Run-Time Performance?</h1></p>
+<span style="color: #dd4b39" ></span><br /><br />
+<strong>Primary Software:</strong>   <br>
+<strong>Primary Software Version:</strong>   7.1<br>
+<strong>Primary Software Fixed Version:</strong>    N/A<br>
+<strong>Secondary Software:</strong>   N/A<br>
+<table>
+    <tr>
+        <td valign="bottom" colspan="50" class="linebuffer">
+            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                    <td class="tablegbg"><img src="/images/global/us/invis.gif" width="10" height="1" border="0" alt=""></td>
+                </tr>
+            </table>
+        </td>
+    </tr> 
+</table><br>
+<strong>Problem:</strong>    <br />I need to perform repetitive calculations in my VI, and I am very concerned about run-time performance.  Which programming architecture should I choose - formula nodes, expression nodes, or traditional numeric nodes?<br><br>
+<strong>Solution:</strong>    <br />There are several trade-offs to consider when determining which programming method to use: ease of programming, memory management and execution speed.<br /> <br /> <strong>Ease of Programming</strong><br /> Formula and expression nodes speed up programming time because they allow you to simply cut and paste complex formulas into LabVIEW's graphical programming environment. Formula and expression nodes also make it easier to visually identify the mathematical algorithm being calculated. You should note that expression nodes are limited to one input and one output.<br /> <br /> <strong>Memory Management</strong><br /> By using the <strong>Show Buffer Allocations</strong>&nbsp;tool found under <strong>Tools&raquo;Profile</strong> we can identify where memory is allocated during LabVIEW execution. When looking at the attached examples you can see that formula and expression nodes only allocated memory for the outputs generated. When using traditional numeric nodes memory has to be allocated for each constant used in the calculation as well as the outputs that are generated.<br /> <br /> <strong>Execution Speed</strong><br />In order to determine the optimal architecture for your program, you should perform some sort of benchmark. Since the execution speeds vary depending on the system they are being run on as well as the complexity of the actual formula being used, you should modify the attached VI to something closer to your desired calculation.&nbsp;
+<div><br /> For the purposes of this article, the three architectures were compared against each other to calculate <code>y = 2*x^2 + x + 1</code>, with <code>x</code> varying from 0 to 4,999,999 (5M iterations). The following snippets were used to calculate the execution times in LabVIEW 2011:<br />
+<p align="center"><img src="/public.nsf/$CXIV/ATTACH-AEEE-9HLPJR/$FILE/Expression.png" width="500" height="203" alt="" /></p>
+<p align="center"><img src="/public.nsf/$CXIV/ATTACH-AEEE-9HLPJY/$FILE/Formula_Node.png" width="500" height="197" alt="" /></p>
+<p align="center"><img src="/public.nsf/$CXIV/ATTACH-AEEE-9HLPK4/$FILE/LabVIEW_Primitives.png" width="500" height="195" alt="" /></p>
+The results of the benchmarks are as follows:<br />
+<ul>
+    <li>Expression Node: 72ms</li>
+    <li>Formula Node:  277 ms</li>
+    <li>Traditional Numeric Nodes (LabVIEW primitives):  38 ms</li>
+</ul>
+<div> Based on these benchmarks, you should use LabVIEW primitive functions or expression nodes if execution time is your priority.<br />
+<ul> </ul>
+    </div>
+    </div><br><br>
+<strong>Related Links:</strong>   <br /><a href="http://digital.ni.com/public.nsf/websearch/143B4FD20874BE1786256C4700794F39?OpenDocument">KnowledgeBase 2Q2G3G5A: Is It Better To Index an Array Inside or Outside a Formula Node?</a><br /><a href="http://www.ni.com/white-paper/7572/en/">White Paper: MathScript and Formula Nodes</a><br><br>
+<strong>Attachments:</strong>   <br><a href="/public.nsf/$CXIV/ATTACH-AEEE-9HLPMG/$FILE/Benchmarking_Calculations.vi" target="_top"><img src="/icons/vwicn005.gif" border="0" width="13" height="11" alt="" />Benchmarking_Calculations.vi</a><br><br><!--<a style="display: inline-block; text-align: center" href="/public.nsf/ad0f282819902a1986256f79005462b1/020dd25245f2bcd086256d0e006615e9/$FILE/Traditional.vi" title="Traditional.vi"><img src="/public.nsf/ad0f282819902a1986256f79005462b1/020dd25245f2bcd086256d0e006615e9/fileattachments222/0.12E2?OpenElement&amp;FieldElemFormat=gif" width="76" height="47" alt="Traditional.vi" border="0"></a><a style="display: inline-block; text-align: center" href="/public.nsf/ad0f282819902a1986256f79005462b1/020dd25245f2bcd086256d0e006615e9/$FILE/Expression%20Node.vi" title="Expression Node.vi"><img src="/public.nsf/ad0f282819902a1986256f79005462b1/020dd25245f2bcd086256d0e006615e9/fileattachments222/0.2ED6?OpenElement&amp;FieldElemFormat=gif" width="107" height="47" alt="Expression Node.vi" border="0"></a><a style="display: inline-block; text-align: center" href="/public.nsf/ad0f282819902a1986256f79005462b1/020dd25245f2bcd086256d0e006615e9/$FILE/Formula%20Node.vi" title="Formula Node.vi"><img src="/public.nsf/ad0f282819902a1986256f79005462b1/020dd25245f2bcd086256d0e006615e9/fileattachments222/0.4B64?OpenElement&amp;FieldElemFormat=gif" width="93" height="47" alt="Formula Node.vi" border="0"></a>--><br><br>
+<table>
+    <tr>
+        <td valign="bottom" colspan="50" class="linebuffer">
+            <table width="100%" cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                    <td class="tablegbg"><img src="/images/global/us/invis.gif" width="10" height="1" border="0" alt=""></td>
+                </tr>
+            </table>
+        </td>
+    </tr> 
+</table><br>
+<strong>Report Date:</strong>   04/20/2003<br>
+<strong>Last Updated:</strong>   04/01/2014<br>
+<strong>Document ID:</strong>   2WJCIHHM<br>
+<br>
+<script language ="javascript">
+function comments() {
+	var com_URL = "";
+	window.location = com_URL;
+}
+</script>
+<a name="rank">
+</form><table align="center" border="0" cellpadding="0" cellspacing="0" width="350" class="clearbg" >
+	     <form name="suppfeed" action="/public.nsf/websearch/020DD25245F2BCD086256D0E006615E9?SaveDocument&node=" method="POST" class="globalbg">
+                 <tr>
+          <td valign="top" nowrap width="90"><span style="font-size: 8pt"><strong>Your Feedback!</strong></span></td>
+          <td valign="top" nowrap align="middle" colspan="5"><span style="font-size: 8pt"><img height="7" alt="poor" src="/images/global/us/arrow_poor.gif" width="4" border="0">&nbsp;Poor&nbsp;&nbsp;|&nbsp;&nbsp;Excellent&nbsp;<img height="7" alt="excellent" src="/images/global/us/arrow_excellent.gif" width="4" border="0"></span></td>
+         <td width="1"><img height="1" src="/images/global/us/invis.gif" width="1" border="0"></td>
+          <td>&nbsp;</td>
+          <td valign="top" align="middle"><span style="font-size: 8pt">Yes</span></td>
+          <td valign=top align=middle><span style="font-size: 8pt">No</span></td>
+		</tr>
+        <tr>
+          <td valign="top">
+            <table class="globalbg" cellspacing="0" cellpadding="1" width="100%" border="0">
+               <tr>
+                <td>
+                  <table class=clearbg cellspacing=0 cellpadding=0 width="100%" border="0">
+                     <tr>
+                      <td nowrap height="19"><span style="font-size: 8pt">&nbsp;Document Quality?&nbsp;</span></td>
+					</tr>
+				  </table>
+				</td>
+			  </tr>
+			</table>
+		  </td>
+          <td class="globalbg" valign="center" align="middle"><input type="radio" value="1" name="valueanalysis"></td>
+          <td class="globalbg" valign="center" align="middle"><input type="radio" value="2" name="valueanalysis"></td>
+          <td class="globalbg" valign="center" align="middle"><input type="radio" value="3" name="valueanalysis"></td>
+          <td class="globalbg" valign="center" align="middle"><input type="radio" value="4" name="valueanalysis"></td>
+          <td class="globalbg" valign="center" align="middle"><input type="radio" value="5" name="valueanalysis"></td>
+          <td width="1"><img height="1" alt="" src="/images/global/us/invis.gif" width="1" border="0"></td>
+          <td>
+            <table class="globalbg" cellspacing="0" cellpadding="1" width="100%" border="0">
+              <tr>
+                <td>
+                  <table class="clearbg" cellspacing="0" cellpadding="0" width="100%" border="0">
+                    <tr>
+                      <td nowrap height="19"><span style="font-size: 8pt">&nbsp;Answered Your Question?&nbsp;</span></td>
+					</tr>
+				  </table>
+				</td>
+			  </tr>
+			</table>
+		  </td>
+          <td class="globalbg" valign="center" align="middle"><input type="radio" value="yes" name="emailadd"></td>
+          <td class="globalbg" valign="center" align="middle"><input type="radio" value="no" name="emailadd"></td>
+		</tr>
+        <tr><td valign="top">&nbsp;</td>
+          <td valign="top" align="middle"><span style="font-size: 8pt">1</span></td>
+          <td valign="top" align="middle"><span style="font-size: 8pt">2</span></td>
+          <td valign="top" align="middle"><span style="font-size: 8pt">3</span></td>
+          <td valign="top" align="middle"><span style="font-size: 8pt">4</span></td>
+          <td valign="top" align="middle"><span style="font-size: 8pt">5</span></td>
+        </tr><tr>
+          <td colspan="10"><span class="query" style="font-size: 8pt"><textarea name="comments" rows="3" cols="44">Document needs work? Please tell us why.</textarea></span></td>
+          </tr><tr>
+          <td align="left" colspan="10">
+            <table class="clearbg" cellspacing="0" cellpadding="0" width="100%" border="0">
+              <tr><td width="75%"><span style="font-size: 8pt">Please <a href="https://www.ni.com/contact-us/">Contact NI</a> for all product and support inquiries.</span></td><td align="right" colspan="2"><a href="javascript:validate()"><img alt=submit src="/images/buttons/us/submit.gif" border="0"></a></td>
+			  </tr>
+			</table>
+		  </td>
+		</tr>
+	</form>
+</table><form>
+  
+ 				</div>
+				</td>
+				<td>
+				<div id="tertiarynavigation" class="noindex">
+ 
+  
+ 					</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="clearfloat">&nbsp;</div>
+	</div>
+	<div id="footer" class="noindex">
+		<a href="http://www.ni.com/profile/" rel="nofollow">My Profile</a> | <a href="http://www.ni.com/rss/" rel="nofollow">RSS</a> | <a href="http://www.ni.com/legal/privacy/unitedstates/us/" rel="nofollow">Privacy</a> | <a href="http://www.ni.com/legal/" rel="nofollow">Legal</a> | <a href="http://www.ni.com/contact-us/" rel="nofollow">Contact NI</a> <span class="copyright">&copy; 2014 National Instruments Corporation.  All rights reserved.</span> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+<script language="javascript" type="text/javascript">
+var subject = "Link to National Instruments Web Site";
+var bodytext = encodeURI(window.location.href); 
+document.write('<a href=\"mailto:?subject=' + subject + '&body=' + bodytext + '\">'); 
+document.write('<img src="/images/global/us/email.gif" border="0" alt="E-Mail this Page"> E-Mail this Page</a>');
+</script>
+	</div>
+</div>
+<!-- DTM Footer START-->
+<script type="text/javascript">_satellite.pageBottom();</script>
+<!-- DTM Footer FINISH--> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+<noscript>
+</body>
+</html>
