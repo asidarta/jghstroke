@@ -30,7 +30,7 @@
 			</Item>
 			<Item Name="Force curl.vi" Type="VI" URL="../subVIs/Force curl.vi"/>
 			<Item Name="Get_center_pos.vi" Type="VI" URL="../subVIs/Get_center_pos.vi"/>
-			<Item Name="Global_var.vi" Type="VI" URL="../Global_var.vi"/>
+			<Item Name="Global_var.vi" Type="VI" URL="../subVIs/Global_var.vi"/>
 			<Item Name="GUI_active_MotorForce.vi" Type="VI" URL="../GUI_active_MotorForce.vi"/>
 			<Item Name="GUI_passive_Somatic_Test.vi" Type="VI" URL="../GUI_passive_Somatic_Test.vi"/>
 			<Item Name="GUI_passive_Visual_Test.vi" Type="VI" URL="../GUI_passive_Visual_Test.vi"/>
@@ -40,8 +40,10 @@
 			<Item Name="Plot Dot.vi" Type="VI" URL="../subVIs/Plot Dot.vi"/>
 			<Item Name="Random_passive.vi" Type="VI" URL="../subVIs/Random_passive.vi"/>
 			<Item Name="Respond Box.vi" Type="VI" URL="../subVIs/Respond Box.vi"/>
+			<Item Name="robot_alignment.vi" Type="VI" URL="../subVIs/robot_alignment.vi"/>
 			<Item Name="robot_stay.vi" Type="VI" URL="../subVIs/robot_stay.vi"/>
 			<Item Name="rotation_XY.vi" Type="VI" URL="../subVIs/rotation_XY.vi"/>
+			<Item Name="save_direction.vi" Type="VI" URL="../subVIs/save_direction.vi"/>
 			<Item Name="Setting GUI.vi" Type="VI" URL="../subVIs/Setting GUI.vi"/>
 		</Item>
 		<Item Name="Build Specifications" Type="Build">
